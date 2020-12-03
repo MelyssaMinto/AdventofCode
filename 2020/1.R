@@ -6,7 +6,7 @@
 test_input = c(1721, 979, 366, 299, 675, 1456)
 real_input <- read_csv("GitHub/AdventofCode/2020/1_input.txt",  col_names = FALSE)$X1
 
-# part 1
+# part 1: find two entries that sum to 2020 and return their product
 input=real_input
 for( val1 in input )
   {
@@ -20,7 +20,7 @@ for( val1 in input )
       }
 }
 
-# part 2
+# part 2: find three entries that sum to 2020 and return their product
 input = real_input
 for( val1 in input )
 {
