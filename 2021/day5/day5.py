@@ -62,14 +62,14 @@ def checkOverlap(l, arr_size):
         # horizontal
         elif(y1 == y2):
                 diagram[y1, minx:(maxx+1)] = diagram[y1, minx:(maxx+1)] + 1 
-        # postive diagnal
-        elif(slope == 1):
-            for k,j in zip(range(miny, maxy+1), range(minx, maxx+1)):
-                 diagram[k, j] = diagram[k, j] + 1
-        #negative diagnal
-        elif(slope == -1):
-             for j,k  in zip(range(maxx, minx-1, -1), range(miny, maxy+1)):
-                 diagram[k, j] = diagram[k, j] + 1
+        # # postive diagnal
+        # elif(slope == 1):
+        #     for k,j in zip(range(miny, maxy+1), range(minx, maxx+1)):
+        #          diagram[k, j] = diagram[k, j] + 1
+        # #negative diagnal
+        # elif(slope == -1):
+        #      for j,k  in zip(range(maxx, minx-1, -1), range(miny, maxy+1)):
+        #          diagram[k, j] = diagram[k, j] + 1
 
     # how many cells 2 or more lines 
     print(np.count_nonzero( diagram > 1))
