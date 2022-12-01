@@ -5,13 +5,13 @@ import sys
 
 
 # test input:
-ipt = [3,4,3,1,2]
+test = [3,4,3,1,2]
 
 # # actual input
-# with open(os.path.join(sys.path[0],"input.txt"), "r") as file:
-#     ipt = file.readlines()
-#     ipt = ipt[0].split(',')
-#     ipt = [int(elem) for elem in ipt]
+with open(os.path.join(sys.path[0],"input.txt"), "r") as file:
+    ipt = file.readlines()
+    ipt = ipt[0].split(',')
+    ipt = [int(elem) for elem in ipt]
 
 
 
@@ -44,6 +44,6 @@ def lanternfish(days, initialPop, p=False):
 
 
 
-lanternfish(18, ipt, True)
-lanternfish(30, ipt, True)
-#laternfish(256, ipt) naive approach is too memory intensive
+lanternfish(18, test, True)
+lanternfish(30, test, True)
+laternfish(256, ipt) naive approach is too memory intensive
