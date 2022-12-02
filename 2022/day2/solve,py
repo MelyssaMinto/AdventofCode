@@ -1,0 +1,117 @@
+# Day 2: Rock Paper Scissors
+import os
+import sys
+import csv
+
+# reading in input
+
+with open(os.path.join(sys.path[0],"input.txt"), "r") as inf:
+    reader = csv.reader(inf, delimiter=" ")
+    data = list(zip(*reader))
+   # Second_col = list(zip(*reader))[1]
+
+elf_choice = data[0]
+my_choice = data[1]
+
+# setting up variables 
+
+choice = {  "A" : "rock",
+            "B" : "paper",
+            "C" : "scissors",
+            "X" : "rock",
+            "Y" : "paper",
+            "Z" : "scissors"
+            }
+points = {  "rock" : 1,
+            "paper": 2,
+            "scissors" : 3
+            }
+win = [6]
+loss = [0]
+draw = [3]
+
+# part 1
+def rock_paper_scissors(player1, player2):
+    # get points 
+    my_points = [points[choice[x]]for x in player2]
+
+    # get wins
+    tracker = []
+    for p1, p2 in zip(player1, player2):
+        if(choice[p2] == "win"):
+            if( choice[p2] == "rock"):
+                tracker = tracker + draw
+            elif(choice[p2] == "scissors"):
+                tracker = tracker + loss
+            else:
+                tracker = tracker + win
+        elif( choice[p1] == "paper"):
+            if( choice[p2] == "rock"):
+                tracker = tracker + loss
+            elif(choice[p2] == "scissors"):
+                tracker = tracker + win
+            else:
+                tracker = tracker + draw
+        else:
+            if( choice[p2] == "rock"):
+                tracker = tracker + win
+            elif(choice[p2] == "scissors"):
+                tracker = tracker + draw
+            else:
+                tracker = tracker + loss
+
+    score = [x + y for x, y in zip(my_points, tracker)]
+    print(sum(score))
+
+
+
+rock_paper_scissors(elf_choice, my_choice)
+
+# part2 
+choice = {  "A" : "rock",
+            "B" : "paper",
+            "C" : "scissors",
+            "X" : "lose",
+            "Y" : "draw",
+            "Z" : "win"
+}
+
+tracker = []
+score_card = { "win" : 6,
+                "lose" : 0,
+                "draw" : 3}
+
+def rock_paper_scissors2(player1, player2):
+    # get wins 
+    my_points = [score_card[choice[x]]for x in player2]
+
+    # get points
+    tracker = []
+    for p1, p2 in zip(player1, player2):
+        if(choice[p1] == "rock"):
+            if( choice[p2] == "win"):
+                tracker = tracker + [points['paper']]
+            elif(choice[p2] == "lose"):
+                tracker = tracker + [points['scissors']]
+            else:
+                tracker = tracker + [points["rock"]]
+        elif( choice[p1] == "paper"):
+            if( choice[p2] == "win"):
+                tracker = tracker + [points["scissors"]]
+            elif(choice[p2] == "lose"):
+                tracker = tracker + [points["rock"]]
+            else:
+                tracker = tracker + [points["paper"]]
+        else:
+            if( choice[p2] == "win"):
+                tracker = tracker + [points["rock"]]
+            elif(choice[p2] == "lose"):
+                tracker = tracker + [points["paper"]]
+            else:
+                tracker = tracker + [points["scissors"]]
+
+
+    score = [x + y for x, y in zip(my_points, tracker)]
+    print(sum(score))
+
+rock_paper_scissors2(elf_choice, my_choice)
