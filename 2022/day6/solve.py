@@ -1,6 +1,5 @@
 # --- Day 6: Tuning Trouble ---
 
-# day3
 import os
 import sys
 import string
